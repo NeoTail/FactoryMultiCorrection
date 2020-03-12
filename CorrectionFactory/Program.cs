@@ -10,6 +10,8 @@ namespace CorrectionFactory
     {
         static void Main(string[] args)
         {
+            Factory _toto = new Factory("Toto");
+            _toto.CreateVehicule();
         }
     }
 }
