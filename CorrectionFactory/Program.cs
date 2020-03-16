@@ -10,8 +10,8 @@ namespace CorrectionFactory
     {
         static void Main(string[] args)
         {
-            PlaneFactory _toto = new PlaneFactory("Toyota");
-            PlaneFactoryMenu _factoryMenu = new PlaneFactoryMenu(_toto);
+            BoatFactory _toto = new BoatFactory("Toyota");
+            BoatFactoryMenu _factoryMenu = new BoatFactoryMenu(_toto);
             Console.ReadLine();
         }
     }
