@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CorrectionFactory
 {
-    class BoatFactoryMenu
+    public class BoatFactoryMenu
     {
+
     }
 }
