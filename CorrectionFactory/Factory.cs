@@ -13,16 +13,16 @@ namespace CorrectionFactory
         public Factory(string _name)
         {
             FactoryName = _name;
+            Console.WriteLine($"Factory {FactoryName} is open");
         }
 
         public virtual void CreateVehicule()
         {
             //Vehicule _default = new Vehicule();
-            Vehicule _default = new Vehicule(4578, VehiculeColor.Cyan, 1);
+            Vehicule _default = new Vehicule(4578, VehiculeColor.Cyan, 1, "Toyota");
             FactoryVehicules.Add(_default);
             _default.Start();
             _default.Stop();
-            Console.ReadLine();
         }
     }
 }

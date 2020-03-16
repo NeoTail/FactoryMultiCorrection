@@ -21,31 +21,29 @@ namespace CorrectionFactory
             }
         }
 
+        public string FactoryOwnerName { get; private set; }
+
 
         public Vehicule()
         {
             Color = VehiculeColor.White;
             SerialNumber = 1234;
             EngineNumber = 1;
+            FactoryOwnerName = "Unknown";
         }
 
-        public Vehicule(int _serial, VehiculeColor _color, uint _engineNumber)
+        public Vehicule(int _serial, VehiculeColor _color, uint _engineNumber, string _factoryName = "Unknown")
         {
             Color = _color;
             SerialNumber = _serial;
             EngineNumber = _engineNumber;
+            FactoryOwnerName = _factoryName;
         }
 
 
-        public virtual void Start()
-        {
-            Console.WriteLine($"Vehicule {serialNumber} {Color} is starting with {EngineNumber} engine(s).");
-        }
+        public virtual void Start() => Console.WriteLine($"Vehicule {SerialNumber} {Color} is starting with {EngineNumber} engine(s).");
 
-        public virtual void Stop()
-        {
-            Console.WriteLine($"Vehicule {serialNumber} {Color} is stopping with {EngineNumber} engine(s).");
-        }
+        public virtual void Stop() => Console.WriteLine($"Vehicule {SerialNumber} {Color} is stopping with {EngineNumber} engine(s).");
 
         void Demo() //Pour la leçon
         {
