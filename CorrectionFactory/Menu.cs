@@ -81,6 +81,12 @@ namespace CorrectionFactory
             ShowMenu();
         }
 
+        protected virtual void ReadVehiculesMenu()
+        {
+            factory.ReadAllVehicules();
+            ShowMenu();
+        }
+
         protected virtual void CreateVehiculeCustomChoice(int _serial, VehiculeColor _selectedColor)
         {
             Vehicule _vehicule = new Vehicule(_serial, _selectedColor, 1);
