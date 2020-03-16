@@ -2,11 +2,63 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CorrectionFactory
 {
-    class Menu
+    public class Menu
     {
+        Factory factory = null;
+        string title = "Menu";
+        protected int lastSelection = 0;
+        public string[] choices = new string[]
+        {
+            "choice1",
+            "choice2"
+        };
+
+        public Menu(Factory _factoryRef, string _title, string[] _choices)
+        {
+            factory = _factoryRef;
+            title = _title;
+            choices = _choices;
+        }
+
+        public Menu(Factory _factoryRef)
+        {
+            factory = _factoryRef;
+            title = $"Factory {_factoryRef.FactoryName}";
+        }
+
+
+        protected virtual void ShowMenu()
+        {
+            //Base
+            Console.WriteLine($"\n******[{title.ToUpper()}]******\n");
+            for (int i = 0; i < choices.Length; i++)
+                Console.WriteLine($"{i + 1} - {choices[i]}");
+
+            bool _result = int.TryParse(Console.ReadLine(), out int _resultChoice);
+            IsValidChoice(_result);
+            lastSelection = _resultChoice;
+        }
+
+        protected virtual void SelectChoices(int _select)
+        {
+            if (_select == 1) factory.CreateVehicule();
+            else if (_select == 2) factory.ReadAllVehicules();
+            else if (_select == 3) Environment.Exit(0);
+            else IsValidChoice(false);
+        }
+
+        void IsValidChoice(bool _isValid = true)
+        {
+            if (_isValid) return;
+            Console.WriteLine("Wrong choice !");
+            Thread.Sleep(1000);
+            Console.Clear();
+            ShowMenu();
+        }
     }
 }

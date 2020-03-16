@@ -24,5 +24,10 @@ namespace CorrectionFactory
             _default.Start();
             _default.Stop();
         }
+
+        public virtual void ReadAllVehicules()
+        {
+
+        }
     }
 }
