@@ -57,8 +57,8 @@ namespace CorrectionFactory
             bool _result = int.TryParse(Console.ReadLine(), out int _sails);
             while (!_result && _sails < 0 && _sails > 1)
                 _result = int.TryParse(Console.ReadLine(), out _sails);
-
-            Boat _boat = new Boat(_serial, _selectedColor, 1, factory.FactoryName, _sails);
+            bool _hasSails = _sails == 1;
+            Boat _boat = new Boat(_serial, _selectedColor, 1, factory.FactoryName, _hasSails);
             factory.CreateVehicule(_boat);
             ShowMenu();
         }
