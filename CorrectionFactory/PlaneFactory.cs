@@ -16,6 +16,10 @@ namespace CorrectionFactory
         public override void CreateVehicule(Vehicule _vehicule)
         {
             Plane _plane = (Plane)_vehicule;
+            _plane.Start();
+            _plane.Fly();
+            _plane.Land();
+            _plane.Stop();
             FactoryVehicules.Add(_plane);
         }
 
