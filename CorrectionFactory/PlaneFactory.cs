@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace CorrectionFactory
 {
-    class PlaneFactory
+    public class PlaneFactory : Factory
     {
+        public PlaneFactory(string _name): base(_name)
+        {
+
+        }
+
+        public override void CreateVehicule(Vehicule _vehicule)
+        {
+            Plane _plane = (Plane)_vehicule;
+            FactoryVehicules.Add(_plane);
+        }
+
+        public override void ReadAllVehicules()
+        {
+            base.ReadAllVehicules();
+        }
+
     }
 }
