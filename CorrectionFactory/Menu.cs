@@ -9,7 +9,7 @@ namespace CorrectionFactory
 {
     public class Menu
     {
-        Factory factory = null;
+        protected Factory factory = null;
         string title = "Menu";
         protected int lastSelection = 0;
         public string[] choices = new string[]
@@ -46,10 +46,30 @@ namespace CorrectionFactory
 
         protected virtual void SelectChoices(int _select)
         {
-            if (_select == 1) factory.CreateVehicule();
+            if (_select == 1) CreateVehiculeMenu();
             else if (_select == 2) factory.ReadAllVehicules();
             else if (_select == 3) Environment.Exit(0);
             else IsValidChoice(false);
+        }
+
+        protected virtual void CreateVehiculeMenu()
+        {
+            int _serial = new Random().Next(1000, 9999);
+            string[] _allColors = Enum.GetNames(typeof(VehiculeColor));
+            Console.WriteLine("Color vehicule choice :");
+
+            for (int i = 0; i < _allColors.Length; i++)
+                Console.WriteLine($"{i+1} - {_allColors[i]}");
+
+            bool _result = int.TryParse(Console.ReadLine(), out int _resultChoice);
+            _resultChoice = _resultChoice <= 0 ? 1 : _resultChoice;
+
+            while (!_result || _resultChoice > _allColors.Length)
+                _result = int.TryParse(Console.ReadLine(), out _resultChoice);
+
+            VehiculeColor _color = (VehiculeColor)_resultChoice - 1;
+            Console.WriteLine($"Color selected {_color}");
+            CreateVehiculeCustomChoice(_serial, _color);
         }
 
         void IsValidChoice(bool _isValid = true)
@@ -58,6 +78,13 @@ namespace CorrectionFactory
             Console.WriteLine("Wrong choice !");
             Thread.Sleep(1000);
             Console.Clear();
+            ShowMenu();
+        }
+
+        protected virtual void CreateVehiculeCustomChoice(int _serial, VehiculeColor _selectedColor)
+        {
+            Vehicule _vehicule = new Vehicule(_serial, _selectedColor, 1);
+            factory.CreateVehicule(_vehicule);
             ShowMenu();
         }
     }

@@ -12,7 +12,6 @@ namespace CorrectionFactory
         {
             CarFactory _toto = new CarFactory("Toyota");
             CarFactoryMenu _factoryMenu = new CarFactoryMenu(_toto);
-            _toto.CreateVehicule();
             Console.ReadLine();
         }
     }

@@ -13,12 +13,19 @@ namespace CorrectionFactory
 
         }
 
-        public override void CreateVehicule()
+        public override void CreateVehicule(Vehicule _vehicule)
         {
-            Random _randomSerial = new Random();
-            int _serial = _randomSerial.Next(1000, 9999);
-            Car _default = new Car(_serial, VehiculeColor.Cyan, 1, Car.RimColor.Silver, FactoryName);
-            FactoryVehicules.Add(_default);
+            Car _car = (Car)_vehicule;
+            _car.Start();
+            _car.Drive();
+            _car.Brake();
+            _car.Stop();
+            FactoryVehicules.Add(_car);
+        }
+
+        public override void ReadAllVehicules()
+        {
+            base.ReadAllVehicules();
         }
     }
 }

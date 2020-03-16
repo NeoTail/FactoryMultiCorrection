@@ -23,6 +23,15 @@ namespace CorrectionFactory
 
         public string FactoryOwnerName { get; private set; }
 
+        public virtual string VehiculeInfo
+        {
+            get
+            {
+                return $"Vehicule {SerialNumber} from {FactoryOwnerName} :\n" +
+                    $"Engines : {EngineNumber}\n" +
+                    $"Color : {Color}\n";
+            }
+        }
 
         public Vehicule()
         {

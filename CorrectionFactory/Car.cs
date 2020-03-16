@@ -10,13 +10,22 @@ namespace CorrectionFactory
     {
         public RimColor ColorRim { get; private set; } = RimColor.Silver;
 
+        public override string VehiculeInfo
+        {
+            get
+            {
+                return $"{base.VehiculeInfo}" +
+                    $"Rim color : {ColorRim}";
+            }
+        }
+
         public Car(int _serial, VehiculeColor _color, uint _engineNumber = 1, RimColor _rimColor = RimColor.Silver, string _factoryName = "Unknown") : base(_serial, _color, _engineNumber, _factoryName)
         {
             ColorRim = _rimColor;
         }
 
-        public override void Start() => Console.WriteLine($"Car {SerialNumber} {Color} is starting with {EngineNumber} engine(s) from {FactoryOwnerName}.");
-        public override void Stop() => Console.WriteLine($"Car {SerialNumber} {Color} is stopping with {EngineNumber} engine(s) from {FactoryOwnerName}.");
+        public override void Start() => Console.WriteLine($"Car {SerialNumber} {Color} with {ColorRim} rims is starting with {EngineNumber} engine(s) from {FactoryOwnerName}.");
+        public override void Stop() => Console.WriteLine($"Car {SerialNumber} {Color} with {ColorRim} rims is stopping with {EngineNumber} engine(s) from {FactoryOwnerName}.");
 
         public void Drive() => Console.WriteLine($"Vroom => {SerialNumber}");
 

@@ -25,9 +25,20 @@ namespace CorrectionFactory
             _default.Stop();
         }
 
+        public virtual void CreateVehicule(Vehicule _vehicule)
+        {
+            _vehicule.Start();
+            _vehicule.Stop();
+            FactoryVehicules.Add(_vehicule);
+        }
+
         public virtual void ReadAllVehicules()
         {
-
+            Console.Clear();
+            for (int i = 0; i < FactoryVehicules.Count; i++)
+            {
+                Console.WriteLine(FactoryVehicules[i].VehiculeInfo);
+            }
         }
     }
 }
