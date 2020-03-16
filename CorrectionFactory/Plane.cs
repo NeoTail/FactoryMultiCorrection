@@ -28,5 +28,6 @@ namespace CorrectionFactory
         public override void Stop() => Console.WriteLine($"Plane {SerialNumber} {Color} with {passengersNumber} passengers is stopping with {EngineNumber} engine(s) from {FactoryOwnerName}.");
 
         public void Fly() => Console.WriteLine($"Roar => {SerialNumber}");
+        public void Land() => Console.WriteLine($"No more Roar => {SerialNumber}");
     }
 }
