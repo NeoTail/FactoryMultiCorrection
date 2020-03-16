@@ -13,7 +13,7 @@ namespace CorrectionFactory
             get
             {
                 return $"{base.VehiculeInfo}" +
-                    $"Rim color : ";
+                    $"{(hasSail == true ? "It has sails" : "It doesn't have sails")}";
             }
         }
 
