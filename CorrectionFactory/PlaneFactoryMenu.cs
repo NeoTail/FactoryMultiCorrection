@@ -37,5 +37,18 @@ namespace CorrectionFactory
         {
             base.CreateVehiculeMenu();
         }
+
+        protected override void CreateVehiculeCustomChoice(int _serial, VehiculeColor _selectedColor)
+        {
+            Console.Clear();
+            Console.WriteLine("How many passengers the plane can hold ?");
+            bool _result = uint.TryParse(Console.ReadLine(), out uint _passengers);
+            while (!_result)
+                _result = uint.TryParse(Console.ReadLine(), out _passengers);
+
+            Plane _plane = new Plane(_serial, _selectedColor, 1, factory.FactoryName, _passengers);
+            factory.CreateVehicule(_plane);
+            ShowMenu();
+        }
     }
 }
