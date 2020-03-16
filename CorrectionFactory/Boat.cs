@@ -19,7 +19,7 @@ namespace CorrectionFactory
 
        public bool hasSail = false;
 
-        public Boat(int _serial, VehiculeColor _color, uint _engineNumber = 1, bool _hasSail, string _factoryName = "Unknown") : base(_serial, _color, _engineNumber, _factoryName)
+        public Boat(int _serial, VehiculeColor _color, uint _engineNumber = 1, string _factoryName = "Unknown", bool _hasSail = false;) : base(_serial, _color, _engineNumber, _factoryName)
         {
             hasSail = _hasSail;
         }
