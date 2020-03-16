@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace CorrectionFactory
 {
-    class Boat
+    public class Boat : Vehicule
     {
+        public override string VehiculeInfo
+        {
+            get
+            {
+                return $"{base.VehiculeInfo}" +
+                    $"Rim color : ";
+            }
+        }
+
+       public bool hasSail = false;
+
+        public Boat(int _serial, VehiculeColor _color, uint _engineNumber = 1, bool _hasSail, string _factoryName = "Unknown") : base(_serial, _color, _engineNumber, _factoryName)
+        {
+            hasSail = _hasSail;
+        }
+
+        public override void Start() => Console.WriteLine($"Boat {SerialNumber} {Color} is starting with {EngineNumber} engine(s) from {FactoryOwnerName}. {(hasSail == true ? "It has sails" : "It doesn't have sails")}");
+        public override void Stop() => Console.WriteLine($"Boat {SerialNumber} {Color} is stopping with {EngineNumber} engine(s) from {FactoryOwnerName}. {(hasSail == true ? "It has sails" : "It doesn't have sails")}");
+
+        public void Navigate() => Console.WriteLine($"Ploof => {SerialNumber}");
     }
 }
