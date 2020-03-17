@@ -50,14 +50,14 @@ namespace CorrectionFactory
             Console.WriteLine("Does the boat have sails ?");
             for (int i = 0; i < sailsChoice.Length; i++)
             {
-                Console.WriteLine($"{i} - {sailsChoice[i]}");
+                Console.WriteLine($"{i+1} - {sailsChoice[i]}");
             }
 
-
-            bool _result = bool.TryParse(Console.ReadLine(), out bool _sails);
-            while (!_result)
-                _result = bool.TryParse(Console.ReadLine(), out _sails);
-            Boat _boat = new Boat(_serial, _selectedColor, 1, factory.FactoryName, _sails);
+            bool _result = int.TryParse(Console.ReadLine(), out int _sails);
+            while (!_result || _sails < 1 || _sails > 2)
+                _result = int.TryParse(Console.ReadLine(), out _sails);
+            bool _hasSails = _result == 1;
+            Boat _boat = new Boat(_serial, _selectedColor, 1, factory.FactoryName, _hasSails);
             factory.CreateVehicule(_boat);
             ShowMenu();
         }
